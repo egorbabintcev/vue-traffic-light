@@ -59,13 +59,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import '@/assets/sass/functions';
+
 .traffic__wrapper {
   align-items: center;
   background-color: #636d83;
-  border-radius: 4px;
+  border-radius: rem(4);
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: rem(25);
 }
 </style>

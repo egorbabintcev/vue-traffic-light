@@ -13,30 +13,31 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "@/assets/sass/functions";
+@import "@/assets/sass/mixins";
+
 .traffic__countdown {
   align-items: center;
   background-color: #636d83;
-  border-radius: 4px;
+  border-radius: rem(4);
   color: #fff;
   display: inline-flex;
-  font-size: 24px;
+  font-size: rem(24);
   font-weight: 500;
   justify-content: center;
-  height: 60px;
+  height: rem(60);
   letter-spacing: 0.03em;
-  margin-bottom: 20px;
+  margin-bottom: rem(20);
   position: relative;
-  width: 60px;
-}
+  width: rem(60);
 
-.traffic__countdown::before {
-  background-color: #636d83;
-  content: "";
-  display: block;
-  height: 20px;
-  position: absolute;
-  top: 100%;
-  width: 12px;
+  &::before {
+    @include pseudo;
+    background-color: #636d83;
+    height: rem(20);
+    top: 100%;
+    width: rem(12);
+  }
 }
 </style>

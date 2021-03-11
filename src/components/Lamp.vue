@@ -26,7 +26,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "@/assets/sass/functions";
+
 @keyframes blink {
   from {
     opacity: 1;
@@ -38,33 +40,33 @@ export default {
 
 .traffic__light {
   background-color: #fff;
-  border: 2px solid #fff;
+  border: rem(2) solid #fff;
   border-radius: 50%;
-  height: 75px;
-  width: 75px;
-}
+  height: rem(75);
+  width: rem(75);
 
-.traffic__light:not(.is-on) {
-  opacity: 0.15;
-}
+  &:not(.is-on) {
+    opacity: 0.15;
+  }
 
-.traffic__light:not(:last-child) {
-  margin-bottom: 15px;
-}
+  &:not(:last-child) {
+    margin-bottom: rem(16);
+  }
 
-.traffic__light.is-blink {
-  animation: blink 0.15s ease-in infinite;
-}
+  &.is-blink {
+    animation: blink 0.15s ease-in infinite;
+  }
 
-.traffic__light_red {
-  background-color: #ff4554;
-}
+  &_red {
+    background-color: #ff4554;
+  }
 
-.traffic__light_yellow {
-  background-color: #f0e738;
-}
+  &_yellow {
+    background-color: #f0e738;
+  }
 
-.traffic__light_green {
-  background-color: #57b163;
+  &_green {
+    background-color: #57b163;
+  }
 }
 </style>
