@@ -5,20 +5,37 @@
 <script>
 export default {
   name: "Lamp",
-  props: ["color", "activeColor"],
+  props: {
+    color: String,
+    activeColor: String,
+    countdown: Number,
+  },
   computed: {
     isOn() {
       return this.color === this.activeColor;
     },
 
     classnames() {
-      return `traffic__light_${this.color} ${this.isOn ? "is-on" : ""}`;
+      return `traffic__light_${this.color} ${this.isOn ? "is-on" : ""} ${
+        this.isOn && this.color !== "yellow" && this.countdown < 3
+          ? "is-blink"
+          : ""
+      }`;
     },
   },
 };
 </script>
 
 <style>
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.15;
+  }
+}
+
 .traffic__light {
   background-color: #fff;
   border: 2px solid #fff;
@@ -33,6 +50,10 @@ export default {
 
 .traffic__light:not(:last-child) {
   margin-bottom: 15px;
+}
+
+.traffic__light.is-blink {
+  animation: blink 0.15s ease-in infinite;
 }
 
 .traffic__light_red {

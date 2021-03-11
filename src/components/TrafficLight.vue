@@ -1,22 +1,31 @@
 <template>
+  <Countdown :countdown="interval" />
   <div class="traffic__wrapper">
-    <Lamp color="red" :activeColor="activeColor" />
-    <Lamp color="yellow" :activeColor="activeColor" />
-    <Lamp color="green" :activeColor="activeColor" />
+    <Lamp color="red" :activeColor="activeColor" :countdown="interval" />
+    <Lamp color="yellow" :activeColor="activeColor" :countdown="interval" />
+    <Lamp color="green" :activeColor="activeColor" :countdown="interval" />
   </div>
 </template>
 
 <script>
 import Lamp from "./Lamp";
+import Countdown from "./Countdown";
 
 export default {
   name: "TrafficLight",
   components: {
     Lamp,
+    Countdown,
   },
   props: {
     activeColor: String,
     timeout: Number,
+  },
+  data() {
+    return {
+      intervalID: null,
+      interval: null,
+    };
   },
   computed: {
     getNextColor() {
@@ -32,8 +41,14 @@ export default {
   methods: {
     setTimer() {
       const timeout = this.timeout;
+      this.interval = timeout / 1000;
+
+      this.intervalID = setInterval(() => {
+        if (this.interval > 1) this.interval -= 1;
+      }, 1000);
 
       setTimeout(() => {
+        clearInterval(this.intervalID);
         this.$router.push(this.getNextColor);
       }, timeout);
     },
