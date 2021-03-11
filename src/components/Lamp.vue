@@ -28,6 +28,7 @@ export default {
 
 <style lang="scss">
 @import "@/assets/sass/functions";
+@import "@/assets/sass/mixins";
 
 @keyframes blink {
   from {
@@ -40,10 +41,22 @@ export default {
 
 .traffic__light {
   background-color: #fff;
-  border: rem(2) solid #fff;
+  border: rem(1) solid #fff;
   border-radius: 50%;
   height: rem(75);
+  position: relative;
   width: rem(75);
+
+  &::before {
+    @include pseudo;
+    border-radius: 50%;
+    border-right: rem(4) solid rgba(#fff, 0.6);
+    height: calc(100% - #{rem(10)});
+    left: 51%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - #{rem(20)});
+  }
 
   &:not(.is-on) {
     opacity: 0.15;

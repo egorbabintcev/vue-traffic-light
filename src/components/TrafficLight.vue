@@ -64,8 +64,8 @@ export default {
 
 .traffic__wrapper {
   align-items: center;
-  background-color: #636d83;
-  border-radius: rem(4);
+  background-color: #333f57;
+  border-radius: rem(50);
   display: flex;
   flex-direction: column;
   padding: rem(25);

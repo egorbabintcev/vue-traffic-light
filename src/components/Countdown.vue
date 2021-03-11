@@ -19,7 +19,7 @@ export default {
 
 .traffic__countdown {
   align-items: center;
-  background-color: #636d83;
+  background-color: #333f57;
   border-radius: rem(4);
   color: #fff;
   display: inline-flex;
@@ -34,7 +34,7 @@ export default {
 
   &::before {
     @include pseudo;
-    background-color: #636d83;
+    background-color: inherit;
     height: rem(20);
     top: 100%;
     width: rem(12);
