@@ -37,10 +37,19 @@ export default {
     timeout() {
       this.setTimer();
     },
+
+    interval() {
+      localStorage.setItem("timeout", this.interval * 1000);
+    },
   },
   methods: {
     setTimer() {
-      const timeout = this.timeout;
+      const timeoutLeft = Number(localStorage.getItem("timeout"));
+      const lastActiveColor = localStorage.getItem("lastActiveColor");
+      const timeout =
+        timeoutLeft > 1000 && lastActiveColor === this.activeColor
+          ? timeoutLeft
+          : this.timeout;
       this.interval = timeout / 1000;
 
       this.intervalID = setInterval(() => {
@@ -49,12 +58,15 @@ export default {
 
       setTimeout(() => {
         clearInterval(this.intervalID);
-        this.$router.push(this.getNextColor);
+        const next = this.getNextColor;
+        localStorage.setItem("lastActiveColor", next);
+        this.$router.push(next);
       }, timeout);
     },
   },
   mounted() {
     this.setTimer();
+    localStorage.setItem("lastActiveColor", this.activeColor);
   },
 };
 </script>
