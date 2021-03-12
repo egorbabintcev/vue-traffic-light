@@ -16,11 +16,14 @@ export default {
     },
 
     classnames() {
-      return `traffic__light_${this.color} ${this.isOn ? "is-on" : ""} ${
-        this.isOn && this.color !== "yellow" && this.countdown < 3
-          ? "is-blink"
-          : ""
-      }`;
+      return [
+        `traffic__light_${this.color}`,
+        {
+          "is-on": this.isOn,
+          "is-blink":
+            this.isOn && this.color !== "yellow" && this.countdown < 3,
+        },
+      ];
     },
   },
 };
