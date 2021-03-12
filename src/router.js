@@ -5,27 +5,31 @@ const router = Router.createRouter({
   history: Router.createWebHistory(),
   routes: [
     {
+      path: "/",
+      redirect: "/red",
+    },
+    {
       path: "/red",
       component: TrafficLight,
       props: {
-        activeColor: 'red',
-        timeout: 10000
+        activeColor: "red",
+        timeout: 10000,
       },
     },
     {
       path: "/yellow",
       component: TrafficLight,
       props: {
-        activeColor: 'yellow',
-        timeout: 3000
+        activeColor: "yellow",
+        timeout: 3000,
       },
     },
     {
       path: "/green",
       component: TrafficLight,
       props: {
-        activeColor: 'green',
-        timeout: 15000
+        activeColor: "green",
+        timeout: 15000,
       },
     },
     {

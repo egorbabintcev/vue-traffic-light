@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/sass/functions';
+@import "@/assets/sass/functions";
 
 .traffic__wrapper {
   align-items: center;
